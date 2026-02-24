@@ -6,6 +6,9 @@
     <div>
         <label for="title">Title</label>
         <input type="text" name="title" id="title">
+        @error('title')
+            <p style="color:red;">{{ $message }}</p>
+        @enderror         
     </div>
 
     <div>
@@ -21,21 +24,33 @@
     <div>
         <label for="category">Category</label>
         <input type="text" name="category" id="category">
+        @error('category')
+            <p style="color:red;">{{ $message }}</p>
+        @enderror       
     </div>
 
     <div>
         <label for="price">Price</label>
         <input type="number" step="0.01" name="price" id="price">
+        @error('price')
+            <p style="color:red;">{{ $message }}</p>
+        @enderror       
     </div>
 
     <div>
         <label for="release_year">Release Year</label>
         <input type="number" name="release_year" id="release_year">
+        @error('release_year')
+            <p style="color:red;">{{ $message }}</p>
+        @enderror       
     </div>
 
     <div>
         <label for="stock">Stock</label>
         <input type="number" name="stock" id="stock">
+        @error('stock')
+            <p style="color:red;">{{ $message }}</p>
+        @enderror       
     </div>
 
     <div>
