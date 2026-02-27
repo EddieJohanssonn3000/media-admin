@@ -64,7 +64,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-     
+        $validated = $request->validate([
+        'title' => 'required|string|max:100',
+        'type' => 'required|string',
+        'category' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'release_year' => 'required|integer',
+        'stock' => 'required|integer|min:0',
+        'description' => 'nullable|string'
+    ]);
+
+    $product->update($validated);
+
+    return redirect()->route('products.index'); 
+
     }
 
     /**
