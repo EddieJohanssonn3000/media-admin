@@ -14,8 +14,19 @@ class ProductController extends Controller
     {
         $query = Product::query();
 
+        // Filter by type
         if ($request->filled('type')) {
             $query->where('type', $request->type);
+        }
+
+        // Filter by minimum price
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+
+        // Filter by maximum price
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
         }
 
         $products = $query->get();

@@ -11,6 +11,18 @@
         <option value="book" {{ request('type') == 'book' ? 'selected' : '' }}>Book</option>
     </select>
 
+    <label for="min_price">Min Price:</label>
+    <input type="number" step="1"
+           name="min_price"
+           id="min_price"
+           value="{{ request('min_price') }}">
+
+    <label for="max_price">Max Price:</label>
+    <input type="number" step="1"
+           name="max_price"
+           id="max_price"
+           value="{{ request('max_price') }}">
+
     <button type="submit">Filter</button>
 </form>
 
