@@ -10,9 +10,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $query = Product::query();
+
+        if ($request->filled('type')) {
+            $query->where('type', $request->type);
+        }
+
+        $products = $query->get();
+
         return view('products.index', compact('products'));
     }
 
@@ -30,14 +37,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'title' => 'required|string|max:100',
-        'type' => 'required|string',
-        'category' => 'required|string',
-        'price' => 'required|numeric|min:0',
-        'release_year' => 'required|integer',
-        'stock' => 'required|integer|min:0',
-        'description' => 'nullable|string'
-    ]);
+            'title' => 'required|string|max:100',
+            'type' => 'required|string',
+            'category' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'release_year' => 'required|integer',
+            'stock' => 'required|integer|min:0',
+            'description' => 'nullable|string'
+        ]);
 
         Product::create($request->all());
         return redirect()->route('products.index');
@@ -65,19 +72,18 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
-        'title' => 'required|string|max:100',
-        'type' => 'required|string',
-        'category' => 'required|string',
-        'price' => 'required|numeric|min:0',
-        'release_year' => 'required|integer',
-        'stock' => 'required|integer|min:0',
-        'description' => 'nullable|string'
-    ]);
+            'title' => 'required|string|max:100',
+            'type' => 'required|string',
+            'category' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'release_year' => 'required|integer',
+            'stock' => 'required|integer|min:0',
+            'description' => 'nullable|string'
+        ]);
 
-    $product->update($validated);
+        $product->update($validated);
 
-    return redirect()->route('products.index'); 
-
+        return redirect()->route('products.index');
     }
 
     /**

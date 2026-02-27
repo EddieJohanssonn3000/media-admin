@@ -1,5 +1,19 @@
 <h1>Products</h1>
 
+<form method="GET" action="{{ route('products.index') }}">
+    <label for="type">Filter by Type:</label>
+
+    <select name="type" id="type">
+        <option value="">All</option>
+        <option value="movie" {{ request('type') == 'movie' ? 'selected' : '' }}>Movie</option>
+        <option value="game" {{ request('type') == 'game' ? 'selected' : '' }}>Game</option>
+        <option value="vinyl" {{ request('type') == 'vinyl' ? 'selected' : '' }}>Vinyl</option>
+        <option value="book" {{ request('type') == 'book' ? 'selected' : '' }}>Book</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
 <a href="{{ route('products.create') }}">Add Product</a>
 
 <table border="1">
