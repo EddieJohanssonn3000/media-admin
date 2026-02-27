@@ -28,7 +28,7 @@
 
 <a href="{{ route('products.create') }}">Add Product</a>
 
-<table border="1">
+<table class="product-table">
     <tr>
         <th>Title</th>
         <th>Type</th>
