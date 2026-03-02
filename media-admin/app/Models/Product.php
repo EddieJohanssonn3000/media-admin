@@ -14,7 +14,7 @@ class Product extends Model
     protected $fillable = [
         'title',
         'type',
-        'category',
+        'category_id',
         'price',
         'release_year',
         'stock',

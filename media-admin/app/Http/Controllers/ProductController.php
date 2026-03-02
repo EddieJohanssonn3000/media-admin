@@ -49,7 +49,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -60,14 +61,23 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:100',
             'type' => 'required|string',
-            'category' => 'required|string',
+            'category' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'release_year' => 'required|integer',
             'stock' => 'required|integer|min:0',
             'description' => 'nullable|string'
         ]);
 
-        Product::create($request->all());
+        Product::create([
+            'title' => $validated['title'],
+            'type' => $validated['type'],
+            'category_id' => $validated['category'],
+            'price' => $validated['price'],
+            'release_year' => $validated['release_year'],
+            'stock' => $validated['stock'],
+            'description' => $validated['description'] ?? null,
+        ]);
+
         return redirect()->route('products.index');
     }
 
@@ -84,7 +94,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**

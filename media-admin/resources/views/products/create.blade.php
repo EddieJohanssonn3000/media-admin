@@ -21,14 +21,24 @@
         </select>
     </div>
 
-    <div>
-        <label for="category">Category</label>
-        <input type="text" name="category" id="category">
-        @error('category')
-            <p style="color:red;">{{ $message }}</p>
-        @enderror       
-    </div>
+   <div>
+    <label for="category">Category</label>
 
+    <select name="category" id="category">
+        <option value="">Select category</option>
+
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}"
+                {{ old('category') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+        @endforeach
+    </select>
+
+    @error('category')
+        <p style="color:red;">{{ $message }}</p>
+    @enderror
+</div>
     <div>
         <label for="price">Price</label>
         <input type="number" step="0.01" name="price" id="price">
