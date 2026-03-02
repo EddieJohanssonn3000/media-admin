@@ -105,19 +105,28 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:100',
-            'type' => 'required|string',
-            'category' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'release_year' => 'required|integer',
-            'stock' => 'required|integer|min:0',
-            'description' => 'nullable|string'
-        ]);
+        'title' => 'required|string|max:100',
+        'type' => 'required|string',
+        'category' => 'required|exists:categories,id',
+        'price' => 'required|numeric|min:0',
+        'release_year' => 'required|integer',
+        'stock' => 'required|integer|min:0',
+        'description' => 'nullable|string'
+    ]);
 
-        $product->update($validated);
+    $product->update([
+        'title' => $validated['title'],
+        'type' => $validated['type'],
+        'category_id' => $validated['category'],
+        'price' => $validated['price'],
+        'release_year' => $validated['release_year'],
+        'stock' => $validated['stock'],
+        'description' => $validated['description'] ?? null,
+    ]);
 
-        return redirect()->route('products.index');
+    return redirect()->route('products.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.
