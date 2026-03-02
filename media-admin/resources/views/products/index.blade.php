@@ -11,6 +11,17 @@
         <option value="book" {{ request('type') == 'book' ? 'selected' : '' }}>Book</option>
     </select>
 
+    <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="">All</option>
+                @foreach($categories as $category)
+                  <option value="{{ $category->id }}"
+                {{ request('category') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+        @endforeach
+    </select>
+
     <label for="min_price">Min Price:</label>
     <input type="number" step="1"
            name="min_price"
@@ -43,7 +54,7 @@
         <tr>
             <td>{{ $product->title }}</td>
             <td>{{ $product->type }}</td>
-            <td>{{ $product->category }}</td>
+            <td>{{ $product->category->name }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->release_year }}</td>
             <td>{{ $product->stock }}</td>

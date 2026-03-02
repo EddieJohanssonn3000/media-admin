@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,26 +13,35 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Product::query();
+        $query = Product::with('category');
 
         // Filter by type
         if ($request->filled('type')) {
             $query->where('type', $request->type);
         }
 
-        // Filter by minimum price
+        // Filter by category (relation)
+        if ($request->filled('category')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('id', $request->category);
+            });
+        }
+
+        // Filter by min price
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
         }
 
-        // Filter by maximum price
+        // Filter by max price
         if ($request->filled('max_price')) {
             $query->where('price', '<=', $request->max_price);
         }
 
         $products = $query->get();
 
-        return view('products.index', compact('products'));
+        $categories = Category::all();
+
+        return view('products.index', compact('products', 'categories'));
     }
 
     /**
