@@ -12,7 +12,9 @@
         <label for="title">Title</label>
         <input type="text" name="title" id="title"
                value="{{ old('title', $product->title) }}"
-               required>
+               required
+                aria-describedby="title-error"
+                aria-invalid="@error('title') true @else false @enderror">
 
         @error('title')
             <p id="title-error" role="alert">
@@ -23,7 +25,10 @@
 
     <div>
         <label for="type">Type</label>
-        <select name="type" id="type">
+        <select name="type" id="type" required
+            aria-describedby="type-error"
+            aria-invalid="@error('type') true @else false @enderror">
+
             <option value="movie" {{ $product->type == 'movie' ? 'selected' : '' }}>Movie</option>
             <option value="game" {{ $product->type == 'game' ? 'selected' : '' }}>Game</option>
             <option value="vinyl" {{ $product->type == 'vinyl' ? 'selected' : '' }}>Vinyl</option>
@@ -40,7 +45,10 @@
     <div>
         <label for="category">Category</label>
 
-        <select name="category" id="category">
+        <select name="category" id="category" required
+            aria-describedby="category-error"
+            aria-invalid="@error('category') true @else false @enderror">
+
             @foreach($categories as $category)
                 <option value="{{ $category->id }}"
                     {{ old('category', $product->category_id) == $category->id ? 'selected' : '' }}>
@@ -60,7 +68,9 @@
         <label for="price">Price</label>
         <input type="number" step="0.01" name="price" id="price"
                value="{{ old('price', $product->price) }}"
-               required>
+               required
+                aria-describedby="price-error"
+                aria-invalid="@error('price') true @else false @enderror">>
 
         @error('price')
             <p id="price-error" role="alert">
@@ -73,7 +83,9 @@
         <label for="release_year">Release Year</label>
         <input type="number" name="release_year" id="release_year"
                value="{{ old('release_year', $product->release_year) }}"
-               required>
+               required
+                aria-describedby="release_year-error"
+                aria-invalid="@error('release_year') true @else false @enderror">
 
         @error('release_year')
             <p id="release_year-error" role="alert">
@@ -86,7 +98,9 @@
         <label for="stock">Stock</label>
         <input type="number" name="stock" id="stock"
                value="{{ old('stock', $product->stock) }}"
-               required>
+               required
+                aria-describedby="stock-error"
+                aria-invalid="@error('stock') true @else false @enderror">>
 
         @error('stock')
             <p id="stock-error" role="alert">
