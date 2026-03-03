@@ -1,4 +1,8 @@
-<h1>Add Product</h1>
+@extends('layouts.app')
+
+@section('content')
+
+<h2>Add Product</h2>
 
 <form method="POST" action="{{ route('products.store') }}">
     @csrf
@@ -72,3 +76,5 @@
 </form>
 
 <a href="{{ route('products.index') }}">Back</a>
+
+@endsection

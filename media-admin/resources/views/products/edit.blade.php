@@ -1,4 +1,8 @@
-<h1>Edit Product</h1>
+@extends('layouts.app')
+
+@section('content')
+
+<h2>Edit Product</h2>
 
 <form method="POST" action="{{ route('products.update', $product) }}">
     @csrf
@@ -88,3 +92,5 @@
 </form>
 
 <a href="{{ route('products.index') }}">Back</a>
+
+@endsection

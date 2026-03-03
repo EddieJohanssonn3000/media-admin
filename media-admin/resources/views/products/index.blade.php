@@ -1,4 +1,8 @@
-<h1>Products</h1>
+@extends('layouts.app')
+
+@section('content')
+    
+<h2>Products</h2>
 
 <form method="GET" action="{{ route('products.index') }}">
     <label for="type">Filter by Type:</label>
@@ -37,7 +41,6 @@
     <button type="submit">Filter</button>
 </form>
 
-<a href="{{ route('products.create') }}">Add Product</a>
 
 <table class="product-table">
     <tr>
@@ -74,3 +77,5 @@
         </tr>
     @endforeach
 </table>
+
+@endsection
