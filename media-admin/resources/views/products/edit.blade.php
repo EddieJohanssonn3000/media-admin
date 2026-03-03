@@ -15,7 +15,9 @@
                required>
 
         @error('title')
-            <p>{{ $message }}</p>
+            <p id="title-error" role="alert">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
@@ -29,7 +31,9 @@
         </select>
 
         @error('type')
-            <p>{{ $message }}</p>
+            <p id="type-error" role="alert">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
@@ -46,7 +50,9 @@
         </select>
 
         @error('category')
-            <p style="color:red;">{{ $message }}</p>
+            <p id="category-error" role="alert">
+                {{ $message }}
+            </p>
         @enderror
     </div>
     
@@ -57,7 +63,9 @@
                required>
 
         @error('price')
-            <p>{{ $message }}</p>
+            <p id="price-error" role="alert">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
@@ -68,7 +76,9 @@
                required>
 
         @error('release_year')
-            <p>{{ $message }}</p>
+            <p id="release_year-error" role="alert">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
@@ -79,7 +89,9 @@
                required>
 
         @error('stock')
-            <p>{{ $message }}</p>
+            <p id="stock-error" role="alert">
+                {{ $message }}
+            </p>
         @enderror
     </div>
 
