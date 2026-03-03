@@ -30,13 +30,15 @@
     <input type="number" step="1"
            name="min_price"
            id="min_price"
-           value="{{ request('min_price') }}">
+           value="{{ request('min_price') }}"
+           required>
 
     <label for="max_price">Max Price:</label>
     <input type="number" step="1"
            name="max_price"
            id="max_price"
-           value="{{ request('max_price') }}">
+           value="{{ request('max_price') }}"
+           required>
 
     <button type="submit">Filter</button>
 </form>
