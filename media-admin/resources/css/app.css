@@ -20,12 +20,19 @@ body {
     color: #1a1a1a;
     background: #ffffff;
     margin: 0;
+    
 }
 
 /* Layout */
 header, footer {
     padding: 1rem;
     border-bottom: 2px solid #333;
+    display: flex;
+    justify-content: center;
+}
+
+h1, h2 {
+    text-align: center;
 }
 
 footer {
@@ -47,6 +54,7 @@ nav ul {
 main {
     padding: 1rem;
     max-width: 60rem;
+    margin: 0 auto;
 }
 
 
@@ -123,4 +131,26 @@ th {
     input, select, textarea {
         max-width: 100%;
     }
+}
+
+/* Filter-formulär horisontellt */
+form[method="GET"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+form[method="GET"] > div {
+    display: flex;
+    flex-direction: column;
+}
+
+form[method="GET"] input,
+form[method="GET"] select {
+    margin-bottom: 0;
+    width: auto;
+    min-width: 8rem;
 }
