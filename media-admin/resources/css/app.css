@@ -10,9 +10,9 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/* === A11Y STYLING === */
 
-/* Grundläggande typografi - skalbar med rem */
+/* (BODY, FONTS) */
+ 
 body {
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -20,10 +20,19 @@ body {
     color: #1a1a1a;
     background: #ffffff;
     margin: 0;
-    
 }
 
-/* Layout */
+h1, h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+a {
+    color: #0056b3;
+}
+
+   /* LAYOUT (header, nav, main, footer) */
+  
 header, footer {
     padding: 1rem;
     border-bottom: 2px solid #333;
@@ -31,14 +40,10 @@ header, footer {
     justify-content: center;
 }
 
-h1, h2 {
-    text-align: center;
-}
-
 footer {
     border-bottom: none;
     border-top: 2px solid #333;
-    margin-top: 2rem;
+    margin-top: 18rem;
 }
 
 nav ul {
@@ -49,7 +54,7 @@ nav ul {
     padding: 1rem;
     margin: 0;
     background: #f5f5f5;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 main {
@@ -58,12 +63,8 @@ main {
     margin: 0 auto;
 }
 
-
-a {
-    color: #0056b3;
-}
-
-
+/* FORMS (inputs, labels, buttons) */
+   
 label {
     display: block;
     font-weight: bold;
@@ -80,14 +81,6 @@ input, select, textarea {
     max-width: 20rem;
 }
 
-/* Fält med fel - tjockare röd ram */
-input[aria-invalid="true"],
-select[aria-invalid="true"],
-textarea[aria-invalid="true"] {
-    border-color: #c41e3a;
-    border-width: 3px;
-}
-
 button {
     font-size: 1rem;
     padding: 0.5rem 1rem;
@@ -98,15 +91,54 @@ button {
     cursor: pointer;
 }
 
-/* Felmeddelanden - ikon + text (inte bara färg) */
-.error-message {
-    color: #c41e3a;
-    font-weight: bold;
-    margin-top: -0.75rem;
-    margin-bottom: 1rem;
+button.delete-btn {
+    background: #c41e3a;
 }
 
-/* Tabell */
+button.delete-btn:hover {
+    background: #a01830;
+}
+
+/* LOGIN FORM */
+
+form[action="/login"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+
+form[action="/login"] > div {
+    width: 100%;
+}
+
+/* FILTER-FORM */
+
+form[method="GET"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+form[method="GET"] > div {
+    display: flex;
+    flex-direction: column;
+}
+
+form[method="GET"] input,
+form[method="GET"] select {
+    margin-bottom: 0;
+    width: auto;
+    min-width: 8rem;
+}
+
+/* TABLE */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -123,35 +155,39 @@ th {
     background: #f5f5f5;
 }
 
-/* Responsiv - fungerar vid zoom */
+/* ERROR-MESSAGE */
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: #c41e3a;
+    border-width: 3px;
+}
+
+.error-message {
+    color: #c41e3a;
+    font-weight: bold;
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+}
+
+/* DASHBOARD */
+
+.dashboard-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* RESPONSIVE */
+
 @media (max-width: 40rem) {
     nav ul {
         flex-direction: column;
     }
-    
+
     input, select, textarea {
         max-width: 100%;
     }
-}
-
-/* Filter-formulär horisontellt */
-form[method="GET"] {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: flex-end;
-    margin-bottom: 1.5rem;
-    justify-content: center;
-}
-
-form[method="GET"] > div {
-    display: flex;
-    flex-direction: column;
-}
-
-form[method="GET"] input,
-form[method="GET"] select {
-    margin-bottom: 0;
-    width: auto;
-    min-width: 8rem;
 }

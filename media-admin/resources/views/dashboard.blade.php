@@ -1,14 +1,13 @@
 @extends('layouts.app')
+
 @section('content')
 
-<h1>Dashboard</h1>
+<h2>Welcome, {{ $user->name }}!</h2>
 
-<p>Hello, {{ $user->name }}!</p>
 
-<a href="/products">Go to Products</a>
-
-<br><br>
-
-<a href="/logout">Logout</a>
+<div class="dashboard-links">
+    <a href="/products">Go to Products</a>
+    <a href="/logout">Logout</a>
+</div>
 
 @endsection
