@@ -20,6 +20,9 @@ body {
     color: #1a1a1a;
     background: #ffffff;
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2 {
@@ -43,7 +46,7 @@ header, footer {
 footer {
     border-bottom: none;
     border-top: 2px solid #333;
-    margin-top: 18rem;
+    margin-top: auto;
 }
 
 nav ul {
@@ -58,9 +61,11 @@ nav ul {
 }
 
 main {
-    padding: 1rem;
+    padding: 3rem;
     max-width: 60rem;
     margin: 0 auto;
+    flex-grow: 1;
+    width: 100%;
 }
 
 /* FORMS (inputs, labels, buttons) */
