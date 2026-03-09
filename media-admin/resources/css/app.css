@@ -10,13 +10,27 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+/* COLOR-VARIABLES */
+:root {
+    --color-primary: #0056b3;
+    --color-primary-hover: #004494;
+    --color-success: #1e7e34;
+    --color-success-hover: #166b2a;
+    --color-danger: #c41e3a;
+    --color-danger-hover: #a01830;
+    --color-secondary: #6c757d;
+    --color-secondary-hover: #545b62;
+    --color-text: #1a1a1a;
+    --color-border: #555;
+}
+
 /* (BODY, FONTS) */
  
 body {
-    font-family: var(--font-sans);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    color: #1a1a1a;
+    color: var(--color-text);
     background: #d3d3d361;
     margin: 0;
     min-height: 100vh;
@@ -34,16 +48,16 @@ a {
     font-size: larger;
 }
 
-   /* LAYOUT (header, nav, main, footer) */
+/* LAYOUT (header, nav, main, footer) */
   
 header, footer {
     padding: 1rem;
     display: flex;
     justify-content: center;
+    border-bottom: 2px solid #333;
 }
 
 footer {
-    border-bottom: none;
     border-top: 2px solid #333;
     margin-top: auto;
 }
@@ -55,20 +69,19 @@ nav ul {
     list-style: none;
     padding: 1rem;
     margin: 0;
-    background: #0056b3;
+    background: var(--color-primary);
     justify-content: space-evenly;
-
 }
 
 main {
     padding: 3rem;
-    max-width: 60rem;
+    max-width: 80rem;
     margin: 0 auto;
     flex-grow: 1;
     width: 100%;
 }
 
-/* FORMS (inputs, labels, buttons) */
+/* FORMS (inputs, labels) */
    
 label {
     display: block;
@@ -79,7 +92,7 @@ label {
 input, select, textarea {
     font-size: 1rem;
     padding: 0.5rem;
-    border: 2px solid #555;
+    border: 2px solid var(--color-border);
     border-radius: 4px;
     margin-bottom: 1rem;
     width: 100%;
@@ -87,36 +100,54 @@ input, select, textarea {
     background-color: #ffffff;
 }
 
-button {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-    background: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-button.delete-btn {
-    background: #c41e3a;
-}
-
-button.delete-btn:hover {
-    background: #a01830;
-}
-
-a.btn {
+/* BUTTONS - Base */
+button,
+a.btn,
+.btn-primary,
+.btn-secondary {
     display: inline-block;
-    padding: 0.4rem 1.5rem;
-    background: #1e7e34;
+    padding: 0.6rem 1.5rem;
     color: white;
     text-decoration: none;
     border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* BUTTONS */
+button,
+.btn-primary {
+    background: var(--color-primary);
+}
+
+button:hover,
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+}
+
+a.btn {
+    background: var(--color-success);
 }
 
 a.btn:hover {
-    background: #166b2a;
+    background: var(--color-success-hover);
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+    background: var(--color-secondary-hover);
+}
+
+button.delete-btn {
+    background: var(--color-danger);
+}
+
+button.delete-btn:hover {
+    background: var(--color-danger-hover);
 }
 
 /* LOGIN FORM */
@@ -141,8 +172,7 @@ form[method="GET"] {
     gap: 1rem;
     align-items: flex-end;
     justify-content: center;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 form[method="GET"] > div {
@@ -167,14 +197,16 @@ table {
 
 th, td {
     padding: 0.5rem;
-    border-bottom: 1px solid #555;
-    border-top: 1px solid #555;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     text-align: left;
 }
 
 th {
     background: #ffffff;
 }
+
+/* FORM-CENTERED (create/edit) */
 
 .form-centered {
     display: flex;
@@ -188,14 +220,14 @@ th {
     width: 100%;
 }
 
-.form-centered button {
+.form-centered button,
+.form-centered a {
     margin-top: 1rem;
 }
 
 .form-centered a {
     display: block;
     text-align: center;
-    margin-top: 1rem;
 }
 
 /* ERROR-MESSAGE */
@@ -203,12 +235,12 @@ th {
 input[aria-invalid="true"],
 select[aria-invalid="true"],
 textarea[aria-invalid="true"] {
-    border-color: #c41e3a;
+    border-color: var(--color-danger);
     border-width: 3px;
 }
 
 .error-message {
-    color: #c41e3a;
+    color: var(--color-danger);
     font-weight: bold;
     margin-top: -0.75rem;
     margin-bottom: 1rem;
@@ -223,9 +255,8 @@ textarea[aria-invalid="true"] {
 }
 
 .dashboard-content p {
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    color: #555;
+    margin: 1rem 0 2rem;
+    color: var(--color-border);
     font-size: 1.3rem;
 }
 
@@ -234,32 +265,6 @@ textarea[aria-invalid="true"] {
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
-}
-
-.btn-primary {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: #0056b3;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.btn-primary:hover {
-    background: #004494;
-}
-
-.btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: #6c757d;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.btn-secondary:hover {
-    background: #545b62;
 }
 
 /* RESPONSIVE */
