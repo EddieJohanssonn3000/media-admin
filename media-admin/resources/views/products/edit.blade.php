@@ -7,7 +7,6 @@
 <form method="POST" action="{{ route('products.update', $product) }}" class="form-centered">
     @csrf
     @method('PUT')
-
     <div>
         <label for="title">Title</label>
         <input type="text" name="title" id="title"
@@ -15,7 +14,6 @@
             aria-invalid="{{ $errors->has('title') ? 'true' : 'false' }}">
         @include('partials.error', ['field' => 'title'])
     </div>
-
     <div>
         <label for="type">Type</label>
         <select name="type" id="type" 
@@ -28,7 +26,6 @@
         </select>
         @include('partials.error', ['field' => 'type'])
     </div>
-
     <div>
         <label for="category">Category</label>
         <select name="category" id="category" 
@@ -43,7 +40,6 @@
         </select>
         @include('partials.error', ['field' => 'category'])
     </div>
-
     <div>
         <label for="price">Price</label>
         <input type="number" step="0.01" name="price" id="price"
@@ -51,7 +47,6 @@
             aria-invalid="{{ $errors->has('price') ? 'true' : 'false' }}">
         @include('partials.error', ['field' => 'price'])
     </div>
-
     <div>
         <label for="release_year">Release Year</label>
         <input type="number" name="release_year" id="release_year"
@@ -59,7 +54,6 @@
             aria-invalid="{{ $errors->has('release_year') ? 'true' : 'false' }}">
         @include('partials.error', ['field' => 'release_year'])
     </div>
-
     <div>
         <label for="stock">Stock</label>
         <input type="number" name="stock" id="stock"
@@ -67,16 +61,12 @@
             aria-invalid="{{ $errors->has('stock') ? 'true' : 'false' }}">
         @include('partials.error', ['field' => 'stock'])
     </div>
-
     <div>
         <label for="description">Description</label>
         <textarea name="description" id="description" rows="4">{{ old('description', $product->description) }}</textarea>
         @include('partials.error', ['field' => 'description'])
     </div>
-
     <button type="submit">Update</button>
 </form>
-
-<a href="{{ route('products.index') }}">Back</a>
 
 @endsection

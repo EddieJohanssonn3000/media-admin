@@ -15,7 +15,6 @@
             <option value="book" {{ request('type') == 'book' ? 'selected' : '' }}>Book</option>
         </select>
     </div>
-
     <div>
         <label for="category">Category:</label>
         <select name="category" id="category">
@@ -27,7 +26,6 @@
             @endforeach
         </select>
     </div>
-
     <div>
         <label for="min_price">Min Price:</label>
         <input type="number" step="1"
@@ -35,7 +33,6 @@
             id="min_price"
             value="{{ request('min_price') }}">
     </div>
-
     <div>
         <label for="max_price">Max Price:</label>
         <input type="number" step="1"
@@ -43,10 +40,8 @@
             id="max_price"
             value="{{ request('max_price') }}">
     </div>
-
     <button type="submit">Filter</button>
 </form>
-
 <table>
     <thead>
         <tr>
