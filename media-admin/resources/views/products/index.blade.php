@@ -63,7 +63,7 @@
         @foreach ($products as $product)
             <tr>
                 <td>{{ $product->title }}</td>
-                <td>{{ $product->type }}</td>
+                <td>{{ ucfirst($product->type) }}</td>
                 <td>{{ $product->category->name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->release_year }}</td>
@@ -74,7 +74,7 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('products.edit', $product) }}">Edit</a>
+                    <a href="{{ route('products.edit', $product) }}" class="btn">Edit</a>
                     <form action="{{ route('products.destroy', $product) }}"
                         method="POST"
                         style="display:inline;">

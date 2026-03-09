@@ -4,7 +4,7 @@
 
 <h2>Edit Product</h2>
 
-<form method="POST" action="{{ route('products.update', $product) }}">
+<form method="POST" action="{{ route('products.update', $product) }}" class="form-centered">
     @csrf
     @method('PUT')
 

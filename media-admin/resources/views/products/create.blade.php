@@ -4,7 +4,7 @@
 
 <h2>Add Product</h2>
 
-<form method="POST" action="{{ route('products.store') }}">
+<form method="POST" action="{{ route('products.store') }}" class="form-centered">
     @csrf
 
     <div>

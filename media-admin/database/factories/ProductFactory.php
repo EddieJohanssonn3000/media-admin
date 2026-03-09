@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Validation\Rules\Unique;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -71,7 +72,7 @@ class ProductFactory extends Factory
             ->first();
 
         return [
-            'title' => fake()->randomElement($media[$type]['titles']),
+            'title' => fake()->unique()->randomElement($media[$type]['titles']),
             'type' => $type,
             'category_id' => $category->id,
             'price' => fake()->numberBetween(
