@@ -96,7 +96,6 @@ input, select, textarea {
     border-radius: 4px;
     margin-bottom: 1rem;
     width: 100%;
-    max-width: 20rem;
     background-color: #ffffff;
 }
 
@@ -279,3 +278,12 @@ textarea[aria-invalid="true"] {
     }
 }
 
+/* FOCUS STYLES (keyboard navigation) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #0c0c0c;
+    outline-offset: 2px;
+}
