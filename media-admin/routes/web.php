@@ -7,9 +7,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogoutController;
 
-// Route::redirect('/', '/products');
-
-
 Route::view('/', 'index')->name('login');
 
 Route::post('/login', LoginController::class)->middleware('guest');
