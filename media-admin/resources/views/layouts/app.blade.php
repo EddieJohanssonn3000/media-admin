@@ -13,7 +13,7 @@
         <h1>Media Admin</h1>
     </header>
     @auth 
-    @if(!request()->is('dashboard'))
+    @if(!request()->is('dashboard') && !isset($hideNav))
     <nav aria-label="Main navigation">
         <ul>
             <li><a href="{{ route('products.index') }}">All Products</a></li>
