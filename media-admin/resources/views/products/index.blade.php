@@ -77,7 +77,7 @@
                         @method('DELETE')
                         <button type="submit"
                         class="delete-btn"
-                                onclick="return confirm('Are you sure?')">
+                                onclick="return confirm('Are you sure you want to delete this product? This action kan not be undone.')">
                             Delete
                         </button>
                     </form>     
