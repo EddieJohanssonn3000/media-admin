@@ -15,4 +15,8 @@ Route::get('/dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('/logout', LogoutController::class);
 
-Route::resource('/products', ProductController::class)->middleware('auth');
+Route::resource('products', ProductController::class)->except(['show'])->middleware('auth');
+
+Route::get('/products/{product}', function () {
+    abort(404);
+});
