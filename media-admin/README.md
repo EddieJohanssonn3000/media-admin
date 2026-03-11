@@ -1,59 +1,152 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Media Admin
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based admin system for managing media products including movies, games, vinyl records and books.
 
-## About Laravel
+## Quick Start (for demo)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```bash
+# 1. Clone the repository
+git clone https://github.com/EddieJohanssonn3000/media-admin.git
+cd media-admin/media-admin
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 2. Install dependencies
+composer install
+npm install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# 3. Setup environment
+cp .env.example .env
+php artisan key:generate
 
-## Learning Laravel
+# 4. Setup database and seed with test data
+-- If database is not created automatically: touch database/database.sqlite 
+php artisan migrate:fresh --seed
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+# 5. Build assets
+npm run build
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# 6. Start the server
+php artisan serve
+```
 
-## Laravel Sponsors
+Open given localhost.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Login Credentials
 
-## Contributing
+| Field    | Value          |
+|----------|----------------|
+| Email    | admin@test.com |
+| Password | 123            |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Features
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Authentication
+- ✅ Secure login/logout
+- ✅ Protected routes (must be logged in to access products)
+- ✅ Dashboard with welcome message
 
-## Security Vulnerabilities
+### Products (CRUD)
+- ✅ View all products in a table
+- ✅ Add new products (title, type, category, price, year, stock, description)
+- ✅ Edit existing products
+- ✅ Delete products with confirmation dialog
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Filtering
+- ✅ Filter by type (Movie, Game, Vinyl, Book)
+- ✅ Filter by category
+- ✅ Filter by price range (min/max)
+- ✅ Filters can be combined
 
-## License
+### User Experience
+- ✅ Stock warning ⚠ when product is out of stock (stock = 0)
+- ✅ Clean navigation between pages
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Accessibility (A11Y)
+- ✅ ARIA labels on navigation and forms
+- ✅ Keyboard navigation support (Tab through all elements)
+- ✅ Focus indicators for keyboard users
+- ✅ Error messages with visual indicators (red border)
+- ✅ High contrast colors (WCAG compliant)
+- ✅ Semantic HTML structure
+
+---
+
+## Testing the System
+
+### Basic Flow
+1. Login with credentials above
+2. View dashboard → Click "Go to Products"
+3. Browse products in table
+4. Try filtering by type, category, or price
+5. Add a new product
+6. Edit an existing product
+7. Delete a product (confirm dialog appears)
+8. Logout
+
+### Accessibility Testing
+- Press `Tab` to navigate through the page
+- Zoom to 200% - layout should not break
+- Check that all form errors are visible
+
+### Edge Cases
+- Try submitting empty form → validation errors appear
+- Filter to show products with stock = 0 → warning icon ⚠ appears
+
+---
+
+## Tech Stack
+
+| Technology | Purpose           |
+|------------|-------------------|
+| Laravel 11 | Backend framework |
+| Blade      | Templating        |
+| Vite       | Asset bundling    |
+| CSS        | Custom styling    |
+| SQLite     | Database          |
+
+---
+
+## Project Structure
+
+```
+app/
+├── Http/Controllers/
+│   └── ProductController.php    # CRUD logic
+├── Models/
+│   ├── Product.php              # Product model
+│   └── Category.php             # Category model
+
+resources/views/
+├── errors/
+│   └── 404.blade.php            # Error page 
+├── partials/
+│   └── error.blade.php          # Error handeling
+├── layouts/
+│   └── app.blade.php            # Main layout
+├── products/
+│   ├── index.blade.php          # Product list with filters
+│   ├── create.blade.php         # Add product form
+│   └── edit.blade.php           # Edit product form
+├── dashboard.blade.php          # Dashboard after login
+└── index.blade.php              # Login page
+
+database/
+├── migrations/                  # Database structure
+├── seeders/                     # Test data
+└── factories/                   # Product factory
+```
+
+## Authors
+
+- Eddie Johansson
+- Allan Tran
+
+---
+
+## Repository
+
+https://github.com/EddieJohanssonn3000/media-admin.git
