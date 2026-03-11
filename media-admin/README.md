@@ -18,7 +18,7 @@ cp .env.example .env
 php artisan key:generate
 
 # 4. Setup database and seed with test data
--- If database is not created automatically: touch database/database.sqlite 
+touch database/database.sqlite 
 php artisan migrate:fresh --seed
 
 # 5. Build assets
