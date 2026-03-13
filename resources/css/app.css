@@ -21,8 +21,8 @@
     --color-secondary: #6c757d;
     --color-secondary-hover: #545b62;
     --color-text: #1a1a1a;
-    --color-border: #555;
-    --color-border-hover: #1a1a1a;
+    --color-border: #1a1a1aa1;
+    --color-border-hover: #555;
 }
 
 /* (BODY, FONTS) */
