@@ -22,6 +22,7 @@
     --color-secondary-hover: #545b62;
     --color-text: #1a1a1a;
     --color-border: #555;
+    --color-border-hover: #1a1a1a;
 }
 
 /* (BODY, FONTS) */
@@ -117,20 +118,20 @@ a.btn,
 /* BUTTONS */
 button,
 .btn-primary {
-    background: var(--color-primary);
+    background: var(--color-border);
 }
 
 button:hover,
 .btn-primary:hover {
-    background: var(--color-primary-hover);
+    background: var(--color-border-hover);
 }
 
 a.btn {
-    background: var(--color-success);
+    background: var(--color-primary);
 }
 
 a.btn:hover {
-    background: var(--color-success-hover);
+    background: var(--color-primary-hover);
 }
 
 .btn-secondary {
