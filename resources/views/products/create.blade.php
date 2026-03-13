@@ -68,7 +68,7 @@
         <textarea name="description" id="description" rows="4">{{ old('description') }}</textarea>
         @include('partials.error', ['field' => 'description'])
     </div>
-    <button type="submit">Save</button>
+    <button type="submit" class="btn-save">Save</button>
 </form>
 
 @endsection

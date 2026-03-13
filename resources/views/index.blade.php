@@ -20,7 +20,7 @@
             <span aria-hidden="true">⚠</span> {{ $errors->first() }}
         </p>
     @endif
-    <button type="submit">Login</button>
+    <button type="submit" class="btn">Login</button>
 </form>
 
 @endsection
